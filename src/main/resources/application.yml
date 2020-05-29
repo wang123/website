@@ -1,0 +1,33 @@
+server:
+  port: 80
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.36.41.30:3307/redsoft?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&serverTimezone=GMT%2B8
+    username: bat
+    password: redSoft!57123
+#    initialization-mode: ALWAYS
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  jackson:
+    default-property-inclusion: NON_NULL
+
+security:
+  simple:
+    ignore-path:
+      method-patterns:
+        - method: get
+          patterns: /**
+        - method: post
+          patterns: /contact-us
+
+#上传地址映射配置
+uploader:
+  path-mapping:
+    local: /usr/projects/website/files
+    http: http://121.36.41.30:${server.port}
